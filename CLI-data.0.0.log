@@ -1,0 +1,10 @@
+May 21, 2015 3:41:58 PM com.mds.routing.CLI.CLI parse
+INFO: inside parse()
+May 21, 2015 3:41:58 PM com.mds.routing.validation.imoValidation isImoValid
+INFO: inside isImoValid()
+May 21, 2015 3:41:58 PM com.mds.routing.validation.imoValidation isInDatabase
+INFO: inside isInDatabase()
+May 21, 2015 3:41:58 PM com.mds.routing.database.databaseConnection getConnection
+INFO: inside getConnection()
+May 21, 2015 3:41:58 PM com.mds.routing.CLI.CLI parse
+INFO: system exit 0

@@ -5,14 +5,18 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
+import com.mds.routing.CLI.CLI;
 import com.mds.routing.CLI.cliParameter;
 import com.mds.routing.database.databaseConnection;
 
 public class imoValidation {
-
+	private static final Logger LOGGER = Logger.getLogger(CLI.class.getName());
 	// validity of imo
 	public boolean isImoValid(cliParameter parameter) {
+		LOGGER.log(Level.INFO, "inside isImoValid()");
 		String imo = parameter.getI();
 //		System.out.println(parameter.getI());
 
@@ -31,6 +35,7 @@ public class imoValidation {
 	// checks whether imo is in database
 	public boolean isInDatabase(cliParameter parameter)
 			throws NumberFormatException, SQLException {
+		LOGGER.log(Level.INFO, "inside isInDatabase()");
 		databaseConnection db = new databaseConnection();
 		Connection connection = db.getConnection(parameter);
 		String query = "SELECT * FROM "+parameter.getTname()+" where "+parameter.getCname()+"=?";
@@ -39,8 +44,8 @@ public class imoValidation {
 		try {
 			preparedStatement = connection.prepareStatement(query);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			LOGGER.log(Level.SEVERE,"inside isInDatabase() SQL EXCEPTION",e);
+			
 		}
 //		System.out.println(Integer.parseInt(parameter.getI()));
 		preparedStatement.setInt(1, Integer.parseInt(parameter.getI()));
