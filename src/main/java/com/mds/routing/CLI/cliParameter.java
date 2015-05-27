@@ -8,9 +8,16 @@ public class cliParameter {
 	public String dbp;
 	public String tname;
 	public String cname;
+	public String dbname;
+
 	
 	
-	
+	public String getDbname() {
+		return dbname;
+	}
+	public void setDbname(String dbname) {
+		this.dbname = dbname;
+	}
 	public String getI() {
 		return i;
 	}

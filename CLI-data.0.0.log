@@ -1,10 +1,9 @@
-May 21, 2015 3:41:58 PM com.mds.routing.CLI.CLI parse
-INFO: inside parse()
-May 21, 2015 3:41:58 PM com.mds.routing.validation.imoValidation isImoValid
-INFO: inside isImoValid()
-May 21, 2015 3:41:58 PM com.mds.routing.validation.imoValidation isInDatabase
-INFO: inside isInDatabase()
-May 21, 2015 3:41:58 PM com.mds.routing.database.databaseConnection getConnection
-INFO: inside getConnection()
-May 21, 2015 3:41:58 PM com.mds.routing.CLI.CLI parse
-INFO: system exit 0
+May 27, 2015 1:02:15 PM com.mds.routing.CLI.CLI parse
+SEVERE: inside parse() parse EXCEPTION 
+org.apache.commons.cli.UnrecognizedOptionException: Unrecognized option: -cnae
+	at org.apache.commons.cli.Parser.processOption(Parser.java:363)
+	at org.apache.commons.cli.Parser.parse(Parser.java:199)
+	at org.apache.commons.cli.Parser.parse(Parser.java:85)
+	at com.mds.routing.CLI.CLI.parse(CLI.java:59)
+	at com.mds.routing.execution.mainExecution.main(mainExecution.java:24)
+

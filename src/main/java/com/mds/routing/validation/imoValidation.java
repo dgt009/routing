@@ -15,6 +15,12 @@ import com.mds.routing.database.databaseConnection;
 public class imoValidation {
 	private static final Logger LOGGER = Logger.getLogger(CLI.class.getName());
 	// validity of imo
+	
+	private Connection sqlConnection;
+	public imoValidation(Connection connection){
+		this.sqlConnection = connection;
+	}
+	
 	public boolean isImoValid(cliParameter parameter) {
 		LOGGER.log(Level.INFO, "inside isImoValid()");
 		String imo = parameter.getI();
@@ -36,18 +42,18 @@ public class imoValidation {
 	public boolean isInDatabase(cliParameter parameter)
 			throws NumberFormatException, SQLException {
 		LOGGER.log(Level.INFO, "inside isInDatabase()");
-		databaseConnection db = new databaseConnection();
-		Connection connection = db.getConnection(parameter);
+
 		String query = "SELECT * FROM "+parameter.getTname()+" where "+parameter.getCname()+"=?";
+//		System.out.println(query);
 		PreparedStatement preparedStatement = null;
 		boolean isindatabase = false;
 		try {
-			preparedStatement = connection.prepareStatement(query);
+			preparedStatement = this.sqlConnection.prepareStatement(query);
 		} catch (SQLException e) {
 			LOGGER.log(Level.SEVERE,"inside isInDatabase() SQL EXCEPTION",e);
 			
 		}
-//		System.out.println(Integer.parseInt(parameter.getI()));
+		//setting imo parameter
 		preparedStatement.setInt(1, Integer.parseInt(parameter.getI()));
 		ResultSet rs = preparedStatement.executeQuery();
 		while (rs.next()) {
